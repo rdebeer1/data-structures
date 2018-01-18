@@ -32,11 +32,11 @@ var LinkedList = function() {
     var current = list.head;
     while (current) {
       if (current.value === target) {
-        current = current.next;
         return true;
       }
-      return false;
+      current = current.next;
     }
+    return false;
   };
   return list;
 };
