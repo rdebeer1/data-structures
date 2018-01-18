@@ -4,9 +4,15 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
+    var currentNodes = Node(value);
+    currentNodes.next = list.tail;
+    list.tail = currentNodes;
+    console.log(JSON.stringify(list));
+    return list;
   };
 
   list.removeHead = function() {
+    list.head = 
   };
 
   list.contains = function(target) {
@@ -20,7 +26,6 @@ var Node = function(value) {
 
   node.value = value;
   node.next = null;
-
   return node;
 };
 
