@@ -1,9 +1,9 @@
 var Queue = function() {
   var someInstance = {
-    storage : {},
-    counter : 0,
-    start : 0,
-    end : 0
+    storage: {},
+    counter: 0,
+    start: 0,
+    end: 0
   };
   
   _.extend(someInstance, queueMethods);
@@ -11,12 +11,12 @@ var Queue = function() {
 };
 
 var queueMethods = {
-  enqueue : function(value) { 
+  enqueue: function(value) { 
     this.storage[this.end] = value;
     this.end++;
   },
 
-  dequeue : function() {
+  dequeue: function() {
     if (this.end - this.start) {
       var result = this.storage[this.start];
       delete this.storage[this.start];
@@ -25,7 +25,7 @@ var queueMethods = {
     }
   },
 
-  size : function() {
+  size: function() {
     return this.end - this.start;
   }
 };
