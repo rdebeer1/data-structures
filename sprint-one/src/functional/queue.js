@@ -21,7 +21,7 @@ var Queue = function() {
     }
   };
 
-  someInstance.counter = function() {
+  someInstance.size = function() {
     return end - start;
   };
 
