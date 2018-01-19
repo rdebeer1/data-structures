@@ -1,10 +1,7 @@
-
-
 // Instantiate a new graph
 var Graph = function() {
   this.nodes = {};
   this.edges = {};
-  // console.log(JSON.stringify(this.edges));
 };
 
 // Add a node to the graph, passing in the node's value.
@@ -23,42 +20,20 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  if (this.contains(node)) {
-    console.log(this.edges[node]);
-    if (this.edges[node]) {
-      var nodeIndex = this.edges[node].indexOf(node);
-      console.log(nodeIndex);
-    }
-    var otherIndex;
-    if (nodeIndex === 0) {
-      otherIndex = 1;
-    } else {
-      otherIndex = 0;
-    }
-    if (this.edges[node]) {
-      var nodeSplice = this.edges[node].splice(otherIndex, 1);
-    }
-    delete this.nodes[node];
-    delete this.edges[node];
-    console.log(this.edges[otherIndex]);
-    delete this.edges[nodeSplice];
+  var otherIndex;
+  var currentNode = this.edges[node];
+  if (currentNode) {
+    var nodeIndex = currentNode.indexOf(node);
+    nodeIndex === 0 ? otherIndex = 1 : otherIndex = 0;
+    var otherNode = currentNode.splice(otherIndex, 1);
   }
+  delete this.nodes[node];
+  delete currentNode;
+  delete this.edges[otherNode];
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
-  // for (var key in this.edges) {
-  //   // var findZero = (this.edges[key][0] === fromNode) && (this.edges[key][1] === toNode);
-  //   // var findOne = (this.edges[key][1] === fromNode) && (this.edges[key][0] === toNode);
-  //   // console.log('1', this.edges[key][0], this.edges[key][1]);
-  //   // console.log('2', this.edges[key][0] === fromNode && this.edges[key][1] === toNode);
-  //   // if (findZero || findOne) {
-  //   //   return true;
-  //   // }
-  //
-  //   //expect(graph.hasEdge(4, 5)).to.equal(true);
-  // }
-  // return false;
   if (this.edges[fromNode]) {
     if (this.edges[fromNode].includes(toNode)) {
       return true;
