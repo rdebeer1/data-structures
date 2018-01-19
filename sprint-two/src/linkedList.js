@@ -9,11 +9,9 @@ var LinkedList = function() {
     if (list.head === null) {
       list.head = node;
       list.tail = node;
-      console.log('add to tail', JSON.stringify(list));
     } else {
       list.tail.next = node;
       list.tail = node;
-      console.log(JSON.stringify(list));
     }
     length++;
     return list;
