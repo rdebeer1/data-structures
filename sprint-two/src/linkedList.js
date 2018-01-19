@@ -22,11 +22,9 @@ var LinkedList = function() {
     list.head = list.head.next;
     length--;
     return severedHead.value;
-    // console.log(JSON.stringify('removehead', value));
   };
 
   list.contains = function(target) {
-    console.log(length);
     var current = list.head;
     while (current) {
       if (current.value === target) {
