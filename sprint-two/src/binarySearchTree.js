@@ -1,48 +1,57 @@
 var BinarySearchTree = function(value) {
-  var newTree = Object.create(BinarySearchTree.methods);
-  newTree._value = value;
-  newTree._right = null;
-  newTree._left = null;  
+  var newTree = Object.create(BinarySearchTree.prototype);
+
+  newTree.value = value;
+  newTree.right = null;
+  newTree.left = null;
 
   return newTree;
 };
 
-BinarySearchTree.methods = {};
-
-BinarySearchTree.methods.insert = function(value) {
+BinarySearchTree.prototype.insert = function(value) {
   var node = BinarySearchTree(value);
-
-
-  if (this._value <= value) {
-    if (!this._left && this._left < value) {
-      this._left = node;
-    } else { 
-      this._left.insert(value); 
+  var loop = function(newTree) {
+    if (newTree.value > value && newTree.left === null) {
+      newTree.left = node;
+    } else if (newTree.value > value) {
+      loop(newTree.left);
+    } else if (newTree.value < value && newTree.right === null) {
+      newTree.right = node;
+    } else {
+      loop(newTree.right);
     }
-  } else if (this._value > value) {
-    if (!this._right && this._right < value) {
-      this._right = node; 
-    } else { 
-      this._right.insert(value);
+  };
+  loop(this);
+};
+
+BinarySearchTree.prototype.contains = function(value) {
+  var hasNode = false;
+  var loop = function(node) {
+    if (node.value === value) {
+      hasNode = true;
+    } else if (node.left && node.value > value) {
+      loop(node.left);
+    } else if (node.right && node.value < value) {
+      loop(node.right);
     }
-  }
+  };
+  loop(this);
+  return hasNode;
 };
 
-BinarySearchTree.methods.contains = function(value) {  
-  if (this._value === value) {
-    return true; 
-  } else if (this._left && this._value < value) {
-    return this._left.contains(value);
-  } else if (this._right && this._value > value) {
-    return this._right.contains(value);
-  }
-  return false;
-};
-//console.log(this._right);
-BinarySearchTree.methods.depthFirstLog = function(callback) {
-
+BinarySearchTree.prototype.depthFirstLog = function(callback) {
+  var loop = function(cb) {
+    callback(cb.value);
+    if (cb.left) {
+      loop(cb.left);
+    }
+    if (cb.right) {
+      loop(cb.right);
+    }
+  };
+  loop(this);
 };
 
-/*
- * Complexity: What is the time complexity of the above functions?
- */
+// /*
+//  * Complexity: What is the time complexity of the above functions?
+//  */
