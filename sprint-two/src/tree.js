@@ -2,7 +2,7 @@ var Tree = function(value) {
   var newTree = {
     value: value,
     // your code here
-    children: []  // fix me
+    children: [] // fix me
   };
   _.extend(newTree, treeMethods);
   return newTree;
