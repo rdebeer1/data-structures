@@ -39,6 +39,22 @@ BinarySearchTree.prototype.contains = function(value) {
   return hasNode;
 };
 
+//added method to remove values from the search tree
+BinarySearchTree.prototype.remove = function(value) {
+  var hasNode;
+  var loop = function(node) {
+    if (node.value === value) {
+      hasNode = node;
+    } else if (node.left && node.value > value) {
+      loop(node.left);
+    } else if (node.right && node.value < value) {
+      loop(node.right);
+    }
+  };
+  loop(this);
+  delete hasNode.value;
+};
+
 BinarySearchTree.prototype.depthFirstLog = function(callback) {
   var loop = function(cb) {
     callback(cb.value);

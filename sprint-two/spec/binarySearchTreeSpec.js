@@ -37,6 +37,12 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
-
+  
   // add more tests here to test the functionality of binarySearchTree
+  it('should remove values at the correct location in the tree', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(6);
+    binarySearchTree.remove(2);
+    expect(binarySearchTree.contains(2)).to.equal(false);
+  });
 });
