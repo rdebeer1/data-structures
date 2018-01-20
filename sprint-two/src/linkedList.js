@@ -18,10 +18,13 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    var severedHead = list.head;
-    list.head = list.head.next;
-    length--;
-    return severedHead.value;
+    //added if statement to check if head is null
+    if (list.head !== null) {
+      var severedHead = list.head;
+      list.head = list.head.next;
+      length--;
+      return severedHead.value; 
+    }
   };
 
   list.contains = function(target) {

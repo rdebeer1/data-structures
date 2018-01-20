@@ -52,4 +52,7 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('Should not remove head if head is null', function() {
+    expect(linkedList.removeHead()).to.equal(undefined);
+  });
 });
