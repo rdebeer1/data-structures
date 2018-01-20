@@ -2,23 +2,19 @@ var Tree = function(value) {
   var newTree = {
     value: value,
     // your code here
-    children: [] // fix me
+    children: []
   };
   _.extend(newTree, treeMethods);
   return newTree;
 };
 
 var treeMethods = {
-  
+
   addChild: function(value) {
-    
     this.children.push(Tree(value));
-    
-    
   },
-  
+
   contains: function(target, child = this) { //ES6!!!
-    
     if (child.value === target) {
       return true;
     }
@@ -26,14 +22,15 @@ var treeMethods = {
       if (this.contains(target, child.children[i])) {
         return true;
       }
-      
     }
     return false;
   }
-  
+
 };
 
 /*
- * Complexity: What is the time complexity of the above functions?
-  
- */
+
+* Complexity: What is the time complexity of the above functions?
+  ** addChild: O(1)
+  ** contains: O(n)
+*/
