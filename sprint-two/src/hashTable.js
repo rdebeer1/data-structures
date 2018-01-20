@@ -6,6 +6,10 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
+  //added if statement to check for falsey values passed as k
+  if (!k) {
+    return undefined;
+  }
   var index = getIndexBelowMaxForKey(k, this._limit);
   var tuple = [k, v];
   var bucket = this._storage.get(index);
@@ -41,8 +45,6 @@ HashTable.prototype.remove = function(k) {
     }
   }
 };
-
-
 
 /*
  

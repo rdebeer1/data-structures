@@ -47,6 +47,16 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+
+  // add more tests here to test the functionality of hashTable
+  it('should handle falsey values for key', function() {
+    expect(hashTable.insert(null, 'Goodman')).to.equal(undefined);
+    expect(hashTable.insert(undefined, 'Goodman')).to.equal(undefined);
+    expect(hashTable.insert(false, 'Goodman')).to.equal(undefined);
+    expect(hashTable.insert('', 'Goodman')).to.equal(undefined);
+    expect(hashTable.insert(NaN, 'Goodman')).to.equal(undefined);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {
