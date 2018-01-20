@@ -22,7 +22,8 @@ Graph.prototype.contains = function(node) {
 Graph.prototype.removeNode = function(node) {
   var otherIndex;
   var currentNode = this.edges[node];
-  if (currentNode) {
+  //added and statement in the if statement to check if the node exist before proceeding with removing
+  if (currentNode && this.contains(node)) {
     var nodeIndex = currentNode.indexOf(node);
     nodeIndex === 0 ? otherIndex = 1 : otherIndex = 0;
     var otherNode = currentNode.splice(otherIndex, 1);
@@ -78,14 +79,3 @@ Graph.prototype.forEachNode = function(cb) {
   ** .forEachNode: O(n)
 
 */
-
-
-
-
-
-
-
-
-
-
-

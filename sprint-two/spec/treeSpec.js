@@ -41,4 +41,10 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  // add more tests here to test the functionality of tree
+  it('should not contain a value that was removed', function() {
+    tree.addChild(5);
+    tree.remove(5);
+    expect(tree.contains(5)).to.equal(false);
+  });
 });

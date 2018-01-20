@@ -68,4 +68,10 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  // add more tests here to test the functionality of graph
+  it('should check to see if node exist before removing', function() {
+    graph.addNode(2);
+    expect(graph.removeNode(1)).to.equal(undefined);
+  });
 });

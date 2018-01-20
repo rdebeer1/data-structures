@@ -1,14 +1,16 @@
 var Set = function() {
   var set = Object.create(setPrototype);
-  set.storage = []; // fix me
-  set.length = 0;
+  set.storage = [];
   return set;
 };
 
 var setPrototype = {
   
   add: function(item) {
-    this.storage.push(item);
+    //added if statement to check if item is === null
+    if (item !== null) {
+      this.storage.push(item);
+    }
   },
 
   contains: function(item) {
@@ -29,8 +31,6 @@ var setPrototype = {
   }
   
 };
-
-
 
 /*
 
