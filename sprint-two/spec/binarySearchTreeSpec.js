@@ -39,9 +39,8 @@ describe('binarySearchTree', function() {
   });
   
   // add more tests here to test the functionality of binarySearchTree
-  it('should remove values at the correct location in the tree', function() {
+  it('should remove value from in a tree using "remove', function() {
     binarySearchTree.insert(2);
-    binarySearchTree.insert(6);
     binarySearchTree.remove(2);
     expect(binarySearchTree.contains(2)).to.equal(false);
   });
